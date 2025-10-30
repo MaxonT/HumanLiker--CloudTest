@@ -172,10 +172,13 @@ app.get('/api/ping', (_req, res) => res.json({ pong: true }));
 
 // Legal docs (static JSON for convenience)
 app.get('/api/legal/privacy', (_req, res) => res.json({version: 'v0.3', updated: '2025-10-29'}));
-app.get('/api/legal/terms', (_req, res) app.get('/', (req, res) => res.send('OK'));
-=> res.json({version: 'v0.3', updated: '2025-10-29'}));
+app.get('/api/legal/terms', (_req, res) => res.json({version: 'v0.3', updated: '2025-10-29'}));
 app.get('/api/legal/cookies', (_req, res) => res.json({version: 'v0.3', updated: '2025-10-29'}));
 
+// Root route for Render health check
+app.get('/', (_req, res) => {
+  res.send('OK');
+})
 app.listen(PORT, () => {
   console.log(`HumanLiker backend running on http://localhost:${PORT}`);
 });
